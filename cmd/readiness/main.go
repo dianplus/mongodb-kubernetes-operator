@@ -151,6 +151,8 @@ func findCurrentStep(processStatuses map[string]health.MmsDirectorStatus) *healt
 //     The last element is very likely to be the Step the Agent is performing at the moment. There are some chances that
 //     this is a waiting step, use isWaitStep to verify this.
 func findCurrentMove(processStatuses map[string]health.MmsDirectorStatus) *health.MoveStatus {
+	logger.Info("Finding current move")
+
 	var currentPlan *health.PlanStatus
 	if len(processStatuses) == 0 {
 		// Seems shouldn't happen but let's check anyway - may be needs to be changed to Info if this happens
