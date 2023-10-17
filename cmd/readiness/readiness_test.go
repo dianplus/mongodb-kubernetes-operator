@@ -266,6 +266,14 @@ func TestHeadlessAgentReachedGoal(t *testing.T) {
 	assert.Equal(t, map[string]string{"agent.mongodb.com/version": "5"}, thePod.Annotations)
 }
 
+// TestChangeVersion verifies that the probe reports "true" if we are in the changeVersion step.
+func TestChangeVersion(t *testing.T) {
+	c := testConfig("testdata/config-change-version.json")
+	ready, err := isPodReady(c)
+	assert.True(t, ready)
+	assert.NoError(t, err)
+}
+
 func testConfig(healthFilePath string) config.Config {
 	return testConfigWithMongoUp(healthFilePath, 15*time.Second)
 }
