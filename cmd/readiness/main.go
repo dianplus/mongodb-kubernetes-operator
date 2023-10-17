@@ -87,7 +87,7 @@ func isPodReady(conf config.Config) (bool, error) {
 func isOnWaitingStep(health health.Status) bool {
 	currentMove := findCurrentMove(health.MmsStatus)
 
-	if strings.ToLower(currentMove.Move) == "changeversion" {
+	if currentMove != nil && strings.ToLower(currentMove.Move) == "changeversion" {
 		logger.Info("Making ChangeVersion to return ready!")
 		return true
 	}

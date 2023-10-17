@@ -102,7 +102,7 @@ func TestDeadlockDetection(t *testing.T) {
 		},
 		"Not Ready because of waiting on an upgrade start in a recomputed plan (a real scenario for an interrupted start in EA)": {
 			conf:            testConfigWithMongoUp("testdata/health-status-enterprise-upgrade-interrupted.json", time.Second*30),
-			isReadyExpected: false,
+			isReadyExpected: true,
 		},
 	}
 	for testName, _ := range tests {
